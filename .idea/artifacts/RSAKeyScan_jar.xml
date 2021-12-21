@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RSAKeyScan:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RSAKeyScan_jar</output-path>
+    <root id="archive" name="RSAKeyScan.jar">
+      <element id="module-output" name="RSAKeyScan" />
+    </root>
+  </artifact>
+</component>
