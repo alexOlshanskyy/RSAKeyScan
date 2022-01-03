@@ -13,4 +13,12 @@ public class DataEntry {
     private void extractRSAKeyData() {
 
     }
+
+    @Override
+    public String toString() {
+        return "DataEntry{" +
+                "rawData='" + rawData + '\'' +
+                ", rsaKeyData=" + rsaKeyData +
+                '}';
+    }
 }
