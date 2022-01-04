@@ -25,10 +25,9 @@ public class ThreadWrapper extends Thread {
                 sb.append('\n');
             }
             this.output = sb.toString();  // set the output
-            System.out.println("Thread finished " + Thread.currentThread().getId());
         }
         catch (Exception e) {
-            System.out.println("Exception is caught");
+            e.printStackTrace();
         }
     }
 

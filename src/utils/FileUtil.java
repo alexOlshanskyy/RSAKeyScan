@@ -17,7 +17,6 @@ public class FileUtil {
             Scanner s = new Scanner(file);
             while (s.hasNextLine()) {
                 String username = s.nextLine();
-                System.out.println(username);
                 usernames.add(username);
             }
             s.close();
@@ -33,7 +32,7 @@ public class FileUtil {
             FileWriter fw = new FileWriter(outputFilename, true);
             fw.write(data);
             fw.close();
-            System.out.println("Successfully wrote to the file.");
+            System.out.println("Successfully wrote to file. Size (char): " + data.length());
             return true;
         } catch (IOException e) {
             System.out.println("An error occurred writing to file " + outputFilename);

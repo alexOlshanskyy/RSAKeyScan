@@ -6,16 +6,14 @@ import java.util.Objects;
 public class RSAKeyData {
     private BigInteger n;
     private BigInteger e;
-    private String username;
     private String originalKey;
     private BigInteger p;
     private BigInteger q;
     private boolean broken;
 
-    public RSAKeyData(BigInteger n, BigInteger e, String username, String originalKey) {
+    public RSAKeyData(BigInteger n, BigInteger e, String originalKey) {
         this.n = n;
         this.e = e;
-        this.username = username;
         this.originalKey = originalKey;
         this.p = BigInteger.valueOf(-1);
         this.q = BigInteger.valueOf(-1);
@@ -29,10 +27,6 @@ public class RSAKeyData {
 
     public BigInteger getE() {
         return e;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     public String getOriginalKey() {
@@ -55,25 +49,21 @@ public class RSAKeyData {
     public boolean equals(Object o) {
         if (this == o) {return true; }
         if (!(o instanceof RSAKeyData)) {return false; }
-        RSAKeyData RSAKeyData = (RSAKeyData) o;
-        return n.equals(RSAKeyData.n) &&
-                e.equals(RSAKeyData.e) &&
-                username.equals(RSAKeyData.username) &&
-                originalKey.equals(RSAKeyData.originalKey);
+        RSAKeyData rsaKeyData = (RSAKeyData) o;
+        return n.equals(rsaKeyData.n) &&
+                e.equals(rsaKeyData.e) &&
+                originalKey.equals(rsaKeyData.originalKey);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(n, e, username, originalKey);
+        return Objects.hash(n, e, originalKey);
     }
 
     @Override
     public String toString() {
-        return "KeyData{" +
+        return
                 "n=" + n +
-                ", e=" + e +
-                ", username='" + username + '\'' +
-                ", originalKey='" + originalKey + '\'' +
-                '}';
+                ",e=" + e;
     }
 }

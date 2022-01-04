@@ -1,5 +1,7 @@
 package utils;
 
+import model.RSAKeyData;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,7 +26,7 @@ public class ModulusExtractionUtil {
             new byte[]{0x00, 0x00, 0x00, 0x07, 0x73, 0x73, 0x68, 0x2d, 0x72, 0x73, 0x61};
     private static final Pattern SSH_RSA_PATTERN = Pattern.compile("ssh-rsa[\\s]+([A-Za-z0-9/+]+=*)");
 
-    public static RSAPublicKey parseSSHPublicKey(String key) throws InvalidKeyException {
+    public static RSAKeyData parseSSHPublicKey(String key) throws InvalidKeyException {
         Matcher matcher = SSH_RSA_PATTERN.matcher(key.trim());
         if (!matcher.matches()) {
             throw new InvalidKeyException("Key format is invalid for SSH RSA.");
@@ -41,10 +43,9 @@ public class ModulusExtractionUtil {
 
             BigInteger exponent = getValue(is);
             BigInteger modulus = getValue(is);
-            System.out.println(exponent.toString());
-            System.out.println(modulus.toString());
-            return (RSAPublicKey) KeyFactory.getInstance("RSA").generatePublic(new RSAPublicKeySpec(modulus, exponent));
-        } catch (IOException | InvalidKeySpecException | NoSuchAlgorithmException e) {
+            RSAKeyData rsaKeyData = new RSAKeyData(modulus, exponent, key);
+            return rsaKeyData;
+        } catch (IOException e) {
             throw new InvalidKeyException("Failed to read SSH RSA certificate from string", e);
         }
     }
