@@ -7,7 +7,7 @@ import java.util.List;
 public class ThreadWrapper extends Thread {
 
     private List<String> usernames;
-    private String output;
+    private String output;  // the output of the thread will be stored here
 
 
     public ThreadWrapper(List<String> usernames) {

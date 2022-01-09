@@ -26,6 +26,12 @@ public class ModulusExtractionUtil {
             new byte[]{0x00, 0x00, 0x00, 0x07, 0x73, 0x73, 0x68, 0x2d, 0x72, 0x73, 0x61};
     private static final Pattern SSH_RSA_PATTERN = Pattern.compile("ssh-rsa[\\s]+([A-Za-z0-9/+]+=*)");
 
+    /**
+     * This method extracts RSA modulus and exponent from ssh-rsa key
+     * @param key is the ssh-rsa key
+     * @return the modulus and exponent of the key in RSAKeyData object
+     * @throws InvalidKeyException is thrown if the format of the key is invalid
+     */
     public static RSAKeyData parseSSHPublicKey(String key) throws InvalidKeyException {
         Matcher matcher = SSH_RSA_PATTERN.matcher(key.trim());
         if (!matcher.matches()) {
@@ -50,6 +56,12 @@ public class ModulusExtractionUtil {
         }
     }
 
+    /**
+     *
+     * @param is is the stream that contains the key
+     * @return exponent of the key on first invocation and modulus on second invocation. The same is should be provided
+     * @throws IOException is thrown if the key is not correctly formatted
+     */
     private static BigInteger getValue(InputStream is) throws IOException {
         byte[] lenBuff = new byte[VALUE_LENGTH];
         if (VALUE_LENGTH != is.read(lenBuff)) {

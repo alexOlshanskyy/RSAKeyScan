@@ -10,6 +10,11 @@ import java.util.Scanner;
 
 public class FileUtil {
 
+    /**
+     * This method reads a file line by line, each line is a username
+     * @param filename is the name of the file from which the usernames should be read.
+     * @return list of usernames as strings
+     */
     public static List<String> readUsernames(String filename) {
         List<String> usernames = new ArrayList<>();
         try {
@@ -27,6 +32,12 @@ public class FileUtil {
         return usernames;
     }
 
+    /**
+     * This method appends provided date to the provided output file
+     * @param outputFilename is the name of the output file
+     * @param data is the string to be written to a file
+     * @return true of write was successful and false otherwise
+     */
     public static boolean writeOutputFile(String outputFilename, String data) {
         try {
             FileWriter fw = new FileWriter(outputFilename, true);
@@ -41,6 +52,11 @@ public class FileUtil {
         return false;
     }
 
+    /**
+     * This method creates the specified file is this directory
+     * @param filename is the name of the file to be created
+     * @return true if file created successfully and false otherwise
+     */
     public static boolean createOutputFile(String filename) {
         File file  = new File(filename);
         try {
