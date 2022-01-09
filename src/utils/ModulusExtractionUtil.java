@@ -9,17 +9,15 @@ import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.security.InvalidKeyException;
 import java.security.InvalidParameterException;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.interfaces.RSAPublicKey;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.RSAPublicKeySpec;
 
 import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @SuppressWarnings("checkstyle:LineLength")
+/**
+ * CREDIT https://stackoverflow.com/questions/47816938/java-ssh-rsa-string-to-public-key
+ */
 public class ModulusExtractionUtil {
     private static final int VALUE_LENGTH = 4;
     private static final byte[] INITIAL_PREFIX =
